@@ -130,7 +130,7 @@ function find_ear(v){
       return i;
     }
   }
-  return vs;
+  return 0;
 }
 
 function midpoint(p1, p2){
