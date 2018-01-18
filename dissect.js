@@ -110,17 +110,27 @@ function area(v){
   return Math.abs(result) / 2;
 }
 
-function is_ear(v, t){
-  for (var j = 0; j < v.length; j++){
-    var x = v[j].x;
-    var y = v[j].y;
-    if (x!= t.p3.x && x != t.p1.x && x != t.p2.x && y != t.p2.y && y != t.p1.y && y != t.p3.y){
-      if(inside_triangle(v[j], t)){
-        return false;
+function find_ear(v){
+  for(var i = 0; i < v.length; i++){
+    var is_ear = true;
+    var i1 = (i-1+v.length)%v.length;
+    var i2 = (i+1)%v.length;
+    var tri = new triangle(v[i1], v[i], v[i2]);
+    if (!is_convex_point(v, i)){
+      continue;
+    }
+    for(var j = 0; j < v.length; j++){
+      if(i1 != j && i2 != j && i != j){
+        if(inside_triangle(v[j], tri)){
+          is_ear = false;
+        }
       }
     }
+    if(is_ear){
+      return i;
+    }
   }
-  return true;
+  return vs;
 }
 
 function midpoint(p1, p2){
@@ -170,24 +180,11 @@ function convex_t(v){
 }
 
 function t(v){
-  var cpy = v.slice();
-  var visited = [];
-  var counter = 0;
-  while(cpy.length > 3){
-    for(var i = 0; i < cpy.length; i++) {
-      if(is_ear(vertices, new triangle(v[(i+cpy.length-1)%cpy.length], v[i], v[(i+1)%cpy.length]))){
-        visited.push(cpy[(cpy.length+i-1)%cpy.length]);
-        visited.push(cpy[(i+1)%cpy.length]);
-        cpy.splice(i, 1);
-        break;
-      }
-    }
-    draw_edges(visited);
-    visited = [];
-    counter += 1;
-    if(counter > 1000){
-      break;
-    }
+  var copy = v.slice();
+  while(copy.length > 3){
+    var index = find_ear(copy);
+    draw_edges([copy[(index-1+copy.length)%copy.length], copy[(index+1)%copy.length]]);
+    copy.splice(index, 1);
   }
 }
 
