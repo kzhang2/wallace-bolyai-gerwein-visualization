@@ -3,14 +3,30 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <link rel="stylesheet" href="styles.css"></link>
+<link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet'>
 
 </head>
-<body onload="startGame()">
-<script type="text/javascript" src="dissect.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/6.6.1/math.min.js" language="javascript"></script>
+<script src="./dissect.js" type="module"></script>
 
 <p>Click to place vertices.</p>
-<button type="button" onclick="remove()"> Delete last vertex </button>
-<button type="button" onclick="triangulate()"> Triangulate polygon </button>
-<button type="button" onclick="clear_all()"> Restart </button>
+<div id="button-container">
+<button type="button" id="remove"> Delete last vertex </button>
+<button type="button" id="triangulate"> Triangulate polygon </button>
+<button type="button" id="clear"> Restart </button>
+</div>
+<br>
+<div id="coord-container">
+    <p>Coordinates: </p>
+    <br>
+    <p>X: </p> <p id="x"></p>
+    <p>Y: </p> <p id="y"></p> 
+    <br>
+    <p>Inside:</p>
+    <p id="inside"></p>
+    <br>
+    <p>Inside which:</p>
+    <p id="inside_which"></p>
+</div>
 </body>
 </html>

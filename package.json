@@ -1,0 +1,22 @@
+{
+  "name": "polygon-triangulation",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dissect.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kzhang2/polygon-triangulation.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kzhang2/polygon-triangulation/issues"
+  },
+  "homepage": "https://github.com/kzhang2/polygon-triangulation#readme",
+  "devDependencies": {
+    "eslint": "^6.8.0"
+  }
+}

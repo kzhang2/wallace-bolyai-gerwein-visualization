@@ -1,4 +1,28 @@
 canvas {
     border: 1px solid #d3d3d3;
     background-color: #f1f1f1;
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+#button-container {
+    padding-left: 0;
+    padding-right: 0; 
+    text-align: center;
+}
+
+p {
+    text-align: center;
+    font-family: 'Lato'; 
+}
+
+#coord-container {
+    text-align: center;
+}
+
+#coord-container p{
+    display: inline;
 }
